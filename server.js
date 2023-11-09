@@ -1,6 +1,8 @@
 const http = require("http");
 const dotenv = require("dotenv");
+
 dotenv.config();
+
 const port = process.env.PORT || 8080;
 const host = process.env.HOST || "localhost";
 
@@ -14,4 +16,9 @@ http
         console.log(serverUrl);
     })
         
-    
+    const fetchData = () => {
+        fetch(`https://api.chucknorris.io/jokes/random`)
+        .then(response => response.json())
+        .then(data => console.log(data));
+        };
+        fetchData()
